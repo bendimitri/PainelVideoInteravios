@@ -1,0 +1,183 @@
+<!-- 
+Como ativar o auto play no Firefox:
+Digite about:config na barra de endereços e pressione Enter
+.
+
+Clique em Aceitar o risco e continuar.
+
+Busque por:
+
+media.autoplay.default → Defina como 0 (zero) para permitir tudo.
+
+media.autoplay.allow-extension-background-pages → Defina como true.
+
+media.autoplay.blocking_policy → Defina como 0.
+
+-->
+
+
+
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="font">Biblioteca Interativa</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        #back-button {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background: none;
+            border: none;
+            font-size: 2rem;
+            color: #fff;
+            cursor: pointer;
+            z-index: 1000;
+        }
+
+        .fade-out {
+            opacity: 0;
+            background-color: #000;
+            transition: opacity 1s ease-in-out;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 9999;
+        }
+
+        .fade-in {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #000;
+            z-index: 9999;
+            opacity: 1;
+            transition: opacity 1s ease;
+        }
+
+        .video-gallery {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .video-item {
+            margin-top: 100px;
+            width: 200px;
+            text-align: center;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .video-item:hover {
+            transform: scale(1.05);
+        }
+
+        .video-thumbnail {
+            width: 100%;
+            border-radius: 8px;
+        }
+
+
+        @font-face {
+            font-family: 'Orbitron';
+            src: url('Static/Orbitron-Regular.ttf') format('truetype'), 
+                 url('Static/Orbitron-Regular.woff2') format('woff2'),
+                 url('Static/Orbitron-Regular.woff') format('woff');
+            font-weight: normal;
+            font-style: normal;
+
+
+        }
+    </style>
+</head>
+<body>
+    <div class="fade-in" id="fade-in"></div>
+
+    <button id="back-button">&#8592;</button>
+
+    <header>
+        <h1 style="font-family: 'Orbitron', sans-serif;">Biblioteca Interativa</h1>
+    </header>
+    <main>
+        <div class="video-gallery">
+            <div class='video-item' onclick="window.location.href='v1.html';">
+                <img class='video-thumbnail' src='thumbnails/thumb1.png' alt='Vídeo 1'>
+                <p>1</p>
+            </div>
+            <div class='video-item' onclick="window.location.href='v2.html';">
+                <img class='video-thumbnail' src='thumbnails/thumb2.png' alt='Vídeo 2'>
+                <p>2</p>
+            </div>
+            <div class='video-item' onclick="window.location.href='v3.html';">
+                <img class='video-thumbnail' src='thumbnails/thumb3.png' alt='Vídeo 3'>
+                <p>3</p>
+            </div>
+            <div class='video-item' onclick="window.location.href='v4.html';">
+                <img class='video-thumbnail' src='thumbnails/thumb4.png' alt='Vídeo 4'>
+                <p>4</p>
+            </div>
+            <div class='video-item' onclick="window.location.href='v5.html';">
+                <img class='video-thumbnail' src='thumbnails/thumb5.png' alt='Vídeo 5'>
+                <p>5</p>
+            </div>
+        </div>
+    </main>
+
+    <script>
+    window.addEventListener("load", () => {
+        const fadeIn = document.getElementById("fade-in");
+        fadeIn.style.opacity = "0"; 
+        setTimeout(() => {
+            fadeIn.style.display = "none";
+        }, 1000); 
+    });
+
+    document.getElementById("back-button").addEventListener("click", () => {
+        document.body.classList.add("fade-out");
+        setTimeout(() => {
+            window.location.href = "start.html"; 
+        }, 1000);
+    });
+
+    let inactivityTimeout;
+
+    function resetInactivityTimer() {
+        clearTimeout(inactivityTimeout);
+        inactivityTimeout = setTimeout(() => {
+            window.location.href = "start.html"; 
+        }, 10000); 
+    }
+
+ 
+    window.addEventListener("mousemove", resetInactivityTimer);
+    window.addEventListener("keydown", resetInactivityTimer);
+    window.addEventListener("click", resetInactivityTimer);
+
+    resetInactivityTimer();
+        window.addEventListener("load", () => {
+            const fadeIn = document.getElementById("fade-in");
+            fadeIn.style.opacity = "0"; 
+
+            setTimeout(() => {
+                fadeIn.style.display = "none"; 
+            }, 1000); 
+        });
+
+        document.getElementById("back-button").addEventListener("click", () => {
+            document.body.classList.add("fade-out");
+            setTimeout(() => {
+                window.location.href = "start.html"; 
+            }, 1000);
+        });
+    </script>
+</body>
+</html>

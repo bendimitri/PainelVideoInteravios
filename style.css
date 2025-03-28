@@ -1,0 +1,58 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #000000;
+    color: #333333;
+}
+
+header {
+    background-color: #000000;
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+main {
+    padding: 20px;
+}
+
+.video-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.video-item {
+    
+    text-align: center;
+    background: rgba(58, 58, 58, 0);
+    border: 1px solid #dddddd27;
+    border-radius: 8px;
+    padding: 10px;
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+video {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    outline: none;
+}
+
+.video-item p {
+    margin: 10px 0 0;
+    font-size: 14px;
+    color: #ffffff;
+}
+
+footer {
+    text-align: center;
+    padding: 10px;
+    background: #000000;
+    color: white;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+}
+

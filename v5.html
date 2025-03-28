@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vídeo</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            background-color: black;
+            color: white;
+            font-family: Arial, sans-serif;
+            overflow: hidden;
+        }
+
+        #back-button {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background: none;
+            border: none;
+            font-size: 2rem;
+            color: white;
+            cursor: pointer;
+            z-index: 10;
+        }
+
+        video {
+            position: absolute;
+            top: 50px; 
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80%;
+            height: calc(100% - 50px);  
+            object-fit: cover;
+        }
+    </style>
+</head>
+<body>
+    <button id="back-button">&#8592;</button>
+
+    <video id="video" controls autoplay>
+        <source src="videos/Video5.mp4" type="video/mp4">
+        Seu navegador não suporta a reprodução de vídeos.
+    </video>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const video = document.getElementById("video");
+            const backButton = document.getElementById("back-button");
+
+            video.play().catch(error => {
+                console.log("Autoplay bloqueado, clique necessário", error);
+            });
+
+            video.addEventListener("ended", () => {
+                window.location.href = "index.html";
+            });
+
+            backButton.addEventListener("click", () => {
+                window.location.href = "index.html";
+            });
+        });
+    </script>
+</body>
+</html>

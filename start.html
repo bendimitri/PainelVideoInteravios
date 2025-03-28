@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clique para Começar</title>
+    <style>
+        @font-face {
+            font-family: 'Orbitron';
+            src: url('Static/Orbitron-Regular.ttf') format('truetype'), 
+                 url('Static/Orbitron-Regular.woff2') format('woff2'),
+                 url('Static/Orbitron-Regular.woff') format('woff');
+            font-weight: normal;
+            font-style: normal;
+
+
+        }
+
+        body {
+            margin: 0;
+            height: 100vh;
+            background-color: #000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #fff;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2rem;
+            text-align: center;
+            cursor: pointer;
+            opacity: 0; 
+            transition: opacity 2s ease-in-out; 
+        }
+
+        .fade-out {
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+        }
+    </style>
+</head>
+<body>
+    <div id="start-text"><h1 style="margin-left: -300px;">Biblioteca Interativa</h1>Toque para Começar<br>Tap to start</div>
+
+    <script>
+        
+        window.addEventListener("load", () => {
+            document.body.style.opacity = 1;
+        });
+
+        
+        document.body.addEventListener("click", () => {
+            const startText = document.getElementById("start-text");
+            startText.classList.add("fade-out");
+
+            setTimeout(() => {
+                window.location.href = "index.html"; 
+            }, 1000); 
+        });
+    </script>
+</body>
+</html>
